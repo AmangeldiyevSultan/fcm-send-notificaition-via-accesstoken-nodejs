@@ -61,7 +61,7 @@ function sendFcmMessage(fcmMessage) {
 
 
 function buildCommonMessage() {
-const messageData = require('./device_token.json');
+const messageData = require('./notification_data.json');
   return {
     'message': {
       'token': messageData.device_token,
