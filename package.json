@@ -1,0 +1,15 @@
+{
+  "name": "notification",
+  "version": "1.0.0",
+  "description": "'generate access token and send notification'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^129.0.0",
+    "https": "^1.0.0"
+  }
+}
