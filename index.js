@@ -13,7 +13,7 @@ const SCOPES = [MESSAGING_SCOPE];
     const jwtClient = new google.auth.JWT(
       key.client_email,
       null, 
-      key.private_key,
+      key.private_key, 
       SCOPES,
       null
     );
@@ -27,6 +27,8 @@ const SCOPES = [MESSAGING_SCOPE];
   }); 
 }
 
+const agent = new https.Agent({ keepAlive: true });
+
 function sendFcmMessage(fcmMessage) {
     getAccessToken().then(function(accessToken) {
       const options = {
@@ -36,9 +38,10 @@ function sendFcmMessage(fcmMessage) {
         // [START use_access_token]
         headers: {
           'Authorization': 'Bearer ' + accessToken
-        }
+        },
         // [END use_access_token] 
-      };
+        agent: agent,
+      }; 
   
       const request = https.request(options, function(resp) {
         resp.setEncoding('utf8');
@@ -57,7 +60,7 @@ function sendFcmMessage(fcmMessage) {
       request.end();
     });
   }
-
+ 
 
 
 function buildCommonMessage() {
@@ -69,26 +72,30 @@ const messageData = require('./notification_data.json');
         'title': messageData.chat_name,
         'body': messageData.message,
       },
-      "android":{ 
-        "ttl":"86400s",
-        "notification":{
-          "click_action":"OPEN_ACTIVITY_1"
-        }
+      "data": { 
+        'isPersonal': messageData.isPersonal.toString(),
+        'chat_id': messageData.chat_id.toString(),
       },
+      "android":{ 
+        "ttl":"86400s", 
+        "notification":{
+          "click_action":messageData.click_action,
+          "channel_id": messageData.channel_id,
+          "icon": messageData.icon,
+          "color": messageData.color,
+        }
+      }, 
       "apns": {
         "headers": {
           "apns-priority": "5",
         },
         "payload": {
-          "aps": {
-            "alert": {
+          "aps": { 
+            "alert": { 
                 'title': messageData.chat_name,
                 'body': messageData.message,
             },
-            "data": { 
-                'isPersonal': messageData.isPersonal,
-                'chat_id': messageData.chat_id,
-            }
+         
           }
         }
       }

@@ -1,7 +1,11 @@
 {
-    "device_token": "d7fcGQmcQn2abEzYfnugdz:APA91bE1EiTbRDlqWJp_J9XxLpQ6M3NNsw4f3h5fcoYg6KzrNCQi_Du6whMWEpyMFGCjPoDs27oUeC4nujyBEL1acuRp3BFRFZxFZk8a7PWSaWZwzLF40cpc8moC-ylZwh6nkDFTZw_0",
+    "device_token": "cObxafykR225kqL30O9-FQ:APA91bFcNacoc2S8HRZMDe0ntOUfubdFf70x36T2NP5UUcI5QH7b-Sp9DsnkoRg-iZJVpu1C2Lw8n69LR83NLx2F_nhUyhC8ehr8cqn_q-YsE7ZWTJXhfyfCSsLCYJAvAsSyRBMtRlIL",
     "chat_name": "Kanat",
     "message": "Hello World",
     "isPersonal": true,
-    "chat_id": 1
+    "chat_id": 3,
+    "click_action": "FLUTTER_NOTIFICATION_CLICK",
+    "channel_id": "Default Notification Channel Id",
+    "icon": "icon_transparent",
+    "color": "#FFA000"
 } 
